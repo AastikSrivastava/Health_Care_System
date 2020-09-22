@@ -2,9 +2,11 @@ package org.com.capg.healthcare.service;
 
 import java.util.List;
 
+import org.com.capg.healthcare.entity.Test;
 import org.com.capg.healthcare.entity.TestCenter;
 import org.com.capg.healthcare.exception.CenterNotFoundException;
 import org.com.capg.healthcare.exception.NameAlreadyExistException;
+import org.com.capg.healthcare.exception.TestAlreadyExistException;
 import org.com.capg.healthcare.exception.TestNotFoundException;
 
 public interface TestService {
@@ -15,6 +17,6 @@ public interface TestService {
 	
 	public List<TestCenter> viewCenter(String testId) throws CenterNotFoundException; 
 	
-	
+	public String addTest(Test test) throws TestAlreadyExistException;
 	
 }

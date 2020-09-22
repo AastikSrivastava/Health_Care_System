@@ -13,6 +13,7 @@ import org.com.capg.healthcare.entity.Test;
 import org.com.capg.healthcare.entity.TestCenter;
 import org.com.capg.healthcare.exception.CenterNotFoundException;
 import org.com.capg.healthcare.exception.NameAlreadyExistException;
+import org.com.capg.healthcare.exception.TestAlreadyExistException;
 import org.com.capg.healthcare.exception.TestNotFoundException;
 import org.com.capg.healthcare.util.TestConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,6 +104,25 @@ List<TestCenter> centerList = testCenterDao.viewCenter(testId);
 		
 		return centerList;
 		
+		
+	}
+
+	@Override
+	public String addTest(Test test) throws TestAlreadyExistException {
+		
+		Optional<Test> opttestbyid = testDao.findById(test.getTestId());
+		
+		if(opttestbyid.isPresent())
+		{
+			throw new TestAlreadyExistException(TestConstants.NAME_ALREADY_EXIST);
+		}
+		
+		
+		test.setTestId(test.getTestId());
+		testDao.save(test);
+		
+		return TestConstants.TEST_ADDED;
+
 		
 	}
 	
