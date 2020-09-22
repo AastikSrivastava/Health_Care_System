@@ -17,4 +17,5 @@ public class TestConstants {
 
 	public static final String NAME_ALREADY_EXIST = "Id already exist";
 	
+	public static final String ADD_TEST_URL_BY_ID="addtest";
 }
