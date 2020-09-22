@@ -10,6 +10,7 @@ import org.com.capg.healthcare.entity.Test;
 import org.com.capg.healthcare.entity.TestCenter;
 import org.com.capg.healthcare.exception.CenterNotFoundException;
 import org.com.capg.healthcare.exception.NameAlreadyExistException;
+import org.com.capg.healthcare.exception.TestAlreadyExistException;
 import org.com.capg.healthcare.exception.TestNotFoundException;
 import org.com.capg.healthcare.service.TestService;
 import org.com.capg.healthcare.util.TestConstants;
@@ -44,6 +45,13 @@ public class TestController {
 		return new SuccessMessage(testService.addTestToCenter(centerId, testId));
 
 	}
+	
+	@GetMapping(TestConstants.ADD_TEST_URL_BY_ID)
+	public SuccessMessage addTest(@RequestBody Test test) throws TestAlreadyExistException
+	{
+		return new SuccessMessage(testService.addTest(test));
+	}
+	
 
 	@GetMapping(TestConstants.VIEW_TEST_BY_CENTER_URL)
 	public List<TestCenter> viewTest(@PathVariable(value = "cid") String centerId) throws TestNotFoundException
