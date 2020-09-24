@@ -16,6 +16,12 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Table(name = "abes_test_center")
 public class TestCenter {
 	
+	/**************************************************************************************
+	-Author                   :     Aastik
+	-Created/Modified Date    :     20-09-2020
+	-Description              :     TestCenter Entity Class
+	***************************************************************************************/
+	
 	@Id
 	@Column(name = "test_center_id")
 	private String testCenterId;
