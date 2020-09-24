@@ -23,6 +23,14 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class TestServiceImpl implements TestService{
 
+	
+	/*******************************************************************************************************************************
+	-Author                   :     Aastik Srivastava
+	-Created/Modified Date    :     22-09-2020
+	-Description              :     Test ServiceImplementation Class
+	*******************************************************************************************************************************/
+	
+	
 	@Autowired
 	private TestRepository testDao;
 	
@@ -33,6 +41,18 @@ public class TestServiceImpl implements TestService{
 
 	@Autowired
 	private TestCenterRepository testCenterDao;
+	
+	
+	/******************************************************************************************
+	-Function Name            :     addTestToCenter
+	-Description              :     adding Test to the Diagnostic Center Database Table using Spring Data
+	-Input Parameters         :     Test ID & Center ID
+	-Return Type              :     added Test object
+	-Throws                   :     TestNotFoundException, CenterNotFoundException, NameAlreadyExistException
+	-Author                   :     Aastik Srivastava
+	-Created/Modified Date    :     23-09-20
+	*******************************************************************************************/
+	
 	
 	@Override
 	public String addTestToCenter(String centerId, String testId)
@@ -74,6 +94,20 @@ public class TestServiceImpl implements TestService{
     return TestConstants.TEST_ADDED;
 		
 	}
+	
+	
+	
+
+	/******************************************************************************************
+	-Function Name            :     viewTests
+	-Description              :     viewing test in particular diagnostic center
+	-Input Parameters         :     Center ID
+	-Return Type              :     List of Tests
+	-Throws                   :     TestNotFoundException
+	-Author                   :     Aastik Srivastava
+	-Created/Modified Date    :     23-09-20
+	*******************************************************************************************/
+	
 
 	@Override
 	public List<TestCenter> viewTests(String centerId) throws TestNotFoundException {
@@ -90,6 +124,19 @@ public class TestServiceImpl implements TestService{
 		return testList;
 	}
 
+	
+	
+	/******************************************************************************************
+	-Function Name            :     viewCenter
+	-Description              :     viewing centers available for a particular test 
+	-Input Parameters         :     Test ID
+	-Return Type              :     List of Centers
+	-Throws                   :     CenterNotFoundException
+	-Author                   :     Aastik Srivastava
+	-Created/Modified Date    :     23-09-20
+	*******************************************************************************************/
+	
+	
 	@Override
 	public List<TestCenter> viewCenter(String testId) throws CenterNotFoundException {
 		
@@ -106,6 +153,20 @@ List<TestCenter> centerList = testCenterDao.viewCenter(testId);
 		
 		
 	}
+	
+	
+	/******************************************************************************************
+	-Function Name            :     saveTestCenter
+	-Description              :     adding Test to Database Table using Spring Data
+	-Input Parameters         :     Test Object
+	-Return Type              :     added Test object
+	-Throws                   :     TestAlreadyExistException();
+	-Author                   :     Aastik Srivastava
+	-Created/Modified Date    :     23-09-20
+	*******************************************************************************************/
+	
+	
+	
 
 	@Override
 	public String addTest(Test test) throws TestAlreadyExistException {
